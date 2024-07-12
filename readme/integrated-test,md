@@ -3,31 +3,39 @@
 
 <!-- code_chunk_output -->
 
-- [Installed jest library](#installed-jest-library)
-- [Add code test to tests folder](#add-code-test-to-tests-folder)
-- [Create jest config file](#create-jest-config-file)
-- [Config package.json file](#config-packagejson-file)
+- [1. Config jest](#1-config-jest)
+  - [Installed jest library](#installed-jest-library)
+  - [Add code test to tests folder](#add-code-test-to-tests-folder)
+  - [Create jest config file](#create-jest-config-file)
+  - [Config package.json file](#config-packagejson-file)
+- [2. Config rest-stare reporter](#2-config-rest-stare-reporter)
+  - [Install rest-stare reporter](#install-rest-stare-reporter)
+  - [Update reporter on jest.config.js file](#update-reporter-on-jestconfigjs-file)
+        - [Example](#example)
 
 <!-- /code_chunk_output -->
 
-
+# 1. Config jest
 ## Installed jest library 
-```
+```bash
 npm install jest --save-dev
 ```
 
 ## Add code test to tests folder
 
-```
+```javascript
 # sum.js
 
 function sum(a, b) {
     return a + b;
-  }
-  module.exports = sum;
-```
+}
 
+module.exports = sum;
 ```
+<!-- line break -->
+
+
+```javascript
 # sum.spec.js
 import sum from './sum';
 
@@ -38,7 +46,7 @@ test('adds 1 + 2 to equal 3', () => {
 ## Create jest config file
 
 - **Create jest config file**
-```
+```bash
 npm create jest
 ```
 - **Config jest** 
@@ -51,10 +59,40 @@ npm create jest
 
 ## Config package.json file
 
-```
+```json
   "scripts": {
     "test": "jest --config jest.config.js"
   },
 ```
 
 
+# 2. Config rest-stare reporter 
+
+## Install rest-stare reporter 
+```bash
+  npm install jest-stare --save-dev
+```
+
+## Update reporter on jest.config.js file
+```javascript
+  "reporters": [
+    "default",
+    [
+      "jest-stare",
+      {
+        "resultDir": "results/jest-stare",
+        "reportTitle": "jest-stare!",
+        "additionalResultsProcessors": [
+          "jest-junit"
+        ],
+        "coverageLink": "../../coverage/lcov-report/index.html",
+        "jestStareConfigJson": "jest-stare.json",
+        "jestGlobalConfigJson": "globalStuff.json"
+      }
+    ]
+  ]
+```
+
+##### Example 
+
+![alt text](images/integrated-test/jest-config-file-report-example.png)

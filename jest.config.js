@@ -109,6 +109,23 @@ const config = {
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
 
+  "reporters": [
+    "default",
+    [
+      "jest-stare",
+      {
+        "resultDir": "results/jest-stare",
+        "reportTitle": "jest-stare!",
+        "additionalResultsProcessors": [
+          "jest-junit"
+        ],
+        "coverageLink": "../../coverage/lcov-report/index.html",
+        "jestStareConfigJson": "jest-stare.json",
+        "jestGlobalConfigJson": "globalStuff.json"
+      }
+    ]
+  ],
+
   // Automatically reset mock state before every test
   // resetMocks: false,
 
