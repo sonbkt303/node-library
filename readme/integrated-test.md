@@ -11,7 +11,8 @@
 - [2. Config rest-stare reporter](#2-config-rest-stare-reporter)
   - [Install rest-stare reporter](#install-rest-stare-reporter)
   - [Update reporter on jest.config.js file](#update-reporter-on-jestconfigjs-file)
-        - [Example](#example)
+    - [Example config reporter](#example-config-reporter)
+    - [Result of reporter](#result-of-reporter)
 
 <!-- /code_chunk_output -->
 
@@ -93,6 +94,10 @@ npm create jest
   ]
 ```
 
-##### Example 
+### Example config reporter
 
 ![alt text](images/integrated-test/jest-config-file-report-example.png)
+
+### Result of reporter
+
+![alt text](images/integrated-test/jest-report-result.png)
