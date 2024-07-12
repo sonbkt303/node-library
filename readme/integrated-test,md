@@ -1,0 +1,60 @@
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Installed jest library](#installed-jest-library)
+- [Add code test to tests folder](#add-code-test-to-tests-folder)
+- [Create jest config file](#create-jest-config-file)
+- [Config package.json file](#config-packagejson-file)
+
+<!-- /code_chunk_output -->
+
+
+## Installed jest library 
+```
+npm install jest --save-dev
+```
+
+## Add code test to tests folder
+
+```
+# sum.js
+
+function sum(a, b) {
+    return a + b;
+  }
+  module.exports = sum;
+```
+
+```
+# sum.spec.js
+import sum from './sum';
+
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
+```
+## Create jest config file
+
+- **Create jest config file**
+```
+npm create jest
+```
+- **Config jest** 
+  
+![alt text](images/integrated-test/create-jest.png)
+
+- **Jest config file result**
+
+![alt text](images/integrated-test/create-jest-config-file.png)
+
+## Config package.json file
+
+```
+  "scripts": {
+    "test": "jest --config jest.config.js"
+  },
+```
+
+
