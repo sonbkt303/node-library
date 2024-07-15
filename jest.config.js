@@ -102,6 +102,7 @@ const config = {
 
   // A preset that is used as a base for Jest's configuration
   // preset: undefined,
+  preset: "@shelf/jest-mongodb",
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -109,21 +110,19 @@ const config = {
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
 
-  "reporters": [
+  reporters: [
     "default",
     [
       "jest-stare",
       {
-        "resultDir": "results/jest-stare",
-        "reportTitle": "jest-stare!",
-        "additionalResultsProcessors": [
-          "jest-junit"
-        ],
-        "coverageLink": "../../coverage/lcov-report/index.html",
-        "jestStareConfigJson": "jest-stare.json",
-        "jestGlobalConfigJson": "globalStuff.json"
-      }
-    ]
+        resultDir: "results/jest-stare",
+        reportTitle: "jest-stare!",
+        additionalResultsProcessors: ["jest-junit"],
+        coverageLink: "../../coverage/lcov-report/index.html",
+        jestStareConfigJson: "jest-stare.json",
+        jestGlobalConfigJson: "globalStuff.json",
+      },
+    ],
   ],
 
   // Automatically reset mock state before every test
@@ -194,7 +193,7 @@ const config = {
   // transform: undefined,
 
   transform: {
-    "^.+\\.[t|j]sx?$": "babel-jest"
+    "^.+\\.[t|j]sx?$": "babel-jest",
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
