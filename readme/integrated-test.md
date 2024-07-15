@@ -13,8 +13,9 @@
   - [Update reporter on jest.config.js file](#update-reporter-on-jestconfigjs-file)
     - [Example config reporter](#example-config-reporter)
     - [Result of reporter](#result-of-reporter)
-- [3. Add transformation from es module to common module](#3-add-transformation-from-es-module-to-common-module)
-  - [Add transform to jest.config.json file instead package.json](#add-transform-to-jestconfigjson-file-instead-packagejson)
+- [3. Setup extension transform, jet-extended to jest](#3-setup-extension-transform-jet-extended-to-jest)
+  - [Add transform to jest.config.json file instead package.json to transform es module to common module](#add-transform-to-jestconfigjson-file-instead-packagejson-to-transform-es-module-to-common-module)
+  - [Setup jest-extended to using more matchers than default](#setup-jest-extended-to-using-more-matchers-than-default)
 
 <!-- /code_chunk_output -->
 
@@ -106,14 +107,23 @@ npm create jest
 ![alt text](images/integrated-test/jest-report-result.png)
 
 
-# 3. Add transformation from es module to common module
+# 3. Setup extension transform, jet-extended to jest
 
+
+## Add transform to jest.config.json file instead package.json to transform es module to common module
 [Installation babel-jest with jest ](https://babeljs.io/setup#installation)
-
-## Add transform to jest.config.json file instead package.json
 ```json
   // jest.config.json
   transform: {
     "^.+\\.[t|j]sx?$": "babel-jest"
   }
+```
+
+## Setup jest-extended to using more matchers than default
+
+[Installation and setup jest-extended ](https://jest-extended.jestcommunity.dev/docs/getting-started/setup)
+
+```json
+// jest.config.js
+setupFilesAfterEnv: ["./jest.extend.setup.js"],
 ```
