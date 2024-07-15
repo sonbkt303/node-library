@@ -13,6 +13,8 @@
   - [Update reporter on jest.config.js file](#update-reporter-on-jestconfigjs-file)
     - [Example config reporter](#example-config-reporter)
     - [Result of reporter](#result-of-reporter)
+- [3. Add transformation from es module to common module](#3-add-transformation-from-es-module-to-common-module)
+  - [Add transform to jest.config.json file instead package.json](#add-transform-to-jestconfigjson-file-instead-packagejson)
 
 <!-- /code_chunk_output -->
 
@@ -61,6 +63,7 @@ npm create jest
 ## Config package.json file
 
 ```json
+  // 
   "scripts": {
     "test": "jest --config jest.config.js"
   },
@@ -101,3 +104,16 @@ npm create jest
 ### Result of reporter
 
 ![alt text](images/integrated-test/jest-report-result.png)
+
+
+# 3. Add transformation from es module to common module
+
+[Installation babel-jest with jest ](https://babeljs.io/setup#installation)
+
+## Add transform to jest.config.json file instead package.json
+```json
+  // jest.config.json
+  transform: {
+    "^.+\\.[t|j]sx?$": "babel-jest"
+  }
+```
