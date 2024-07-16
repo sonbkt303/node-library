@@ -12,7 +12,7 @@ describe("Must connect and insert document success", () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = await connection.db(DB_NAME);
+    db = connection.db(DB_NAME);
   });
 
   afterAll(async () => {
