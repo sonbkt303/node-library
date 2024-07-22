@@ -8,4 +8,12 @@ const subString = (start, end, newString = "") => {
   return newString.substring(start, end);
 };
 
-export { subString };
+
+const removeSpecialCharacter = (string = "") => {
+  if(typeof string !== "string") {
+    return "";
+  }
+  return string?.replace(/[-~!@#$%^&*()_=+{}\[\]:";'<>,\.?\/\\\|]/g, "");
+};
+
+export { subString, removeSpecialCharacter };

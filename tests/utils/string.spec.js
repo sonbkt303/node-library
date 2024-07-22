@@ -1,4 +1,4 @@
-import { subString } from "../../src/utils/string";
+import { subString, removeSpecialCharacter } from "../../src/utils/string";
 
 describe("String", () => {
   describe("#Substring()", () => {
@@ -24,6 +24,27 @@ describe("String", () => {
         const sub = subString(0, );
         expect(sub).toBeEmpty();
     });
-
   });
+
+  describe('#removeSpecialCharacter()', () => {
+    it('Should remove special characters success', () => {
+      const mockString = '!@#^*&^(*!#$/.;Helloworld()*)_)+_)(*(_-=+)*';
+      const stringReplace = removeSpecialCharacter(mockString);
+      expect(stringReplace).toEqual('Helloworld');
+    });
+
+
+    it('Should return empty string if input is null', () => {
+      const mockString = null;
+      const stringReplace = removeSpecialCharacter(mockString);
+      expect(stringReplace).toBeEmpty();
+    });
+
+
+    it('Should return empty string if input is undefined', () => {
+      const mockString = undefined;
+      const stringReplace = removeSpecialCharacter(mockString);
+      expect(stringReplace).toBeEmpty();
+    });
+  })
 });
