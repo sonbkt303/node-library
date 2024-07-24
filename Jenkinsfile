@@ -6,6 +6,7 @@ pipeline {
         sh 'echo \'waiting\''
       }
     }
+
   }
   environment {
     dev = 'dev'
