@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout branch') {
       steps {
-        sh 'echo \'hello world\''
+        sh 'echo \'hello world 123132\''
         git(url: 'https://github.com/sonbkt303/node-library', branch: 'main', credentialsId: 'github-account-credential')
       }
     }
