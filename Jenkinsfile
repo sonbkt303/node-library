@@ -35,7 +35,6 @@ pipeline {
     }
 
   }
-
   post {
     always {
       cleanWs(
@@ -43,10 +42,10 @@ pipeline {
         cleanWhenFailure: true,
         cleanWhenNotBuilt: false,
         cleanWhenSuccess: true,
-        cleanWhenUnstable: true,
-        deleteDirs: true,
-        notFailBuild: true,
-        disableDeferredWipeout: true
+        // cleanWhenUnstable: true,
+        // deleteDirs: true,
+        // notFailBuild: true,
+        // disableDeferredWipeout: true
       )
     }
   }
