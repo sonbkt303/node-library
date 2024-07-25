@@ -4,6 +4,7 @@ pipeline {
     registry = "kimsonbui"
     registryCredential = 'docker-hub-credential'
     dockerImage = ''
+    repos = 'api-node'
   }
   agent any
 
@@ -11,7 +12,7 @@ pipeline {
     stage('Building Docker Image') {
       steps {
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + "/$repos:$BUILD_NUMBER";
 
           sh "echo La la la $dockerImage";
         }
@@ -25,6 +26,12 @@ pipeline {
             dockerImage.push()
           }
         }
+      }
+    }
+
+    stage('Cleaning Up') {
+      steps{
+        sh "docker rmi --force $registry/$repos:$BUILD_NUMBER"
       }
     }
 
