@@ -13,7 +13,7 @@ pipeline {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
 
-          sh 'echo $dockerImage';
+          sh "echo La la la $dockerImage";
         }
       }
     }
