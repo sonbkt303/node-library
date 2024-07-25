@@ -10,7 +10,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        nodejs('Node') {
+        nodejs('Node:18.17.0') {
           echo 'Building Application ....'
           sh 'npm install'
           sh 'npm start'
