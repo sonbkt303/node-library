@@ -20,7 +20,7 @@ pipeline {
         //   echo 'Building Application ....'
         //   sh 'npm install'
         // }
-        sh "sudo docker build -t node-api:v1 ."
+        sh "docker build -t node-api:v1 ."
       }
     }
   }
