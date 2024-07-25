@@ -1,15 +1,16 @@
 pipeline {
-  agent any
+  agent { docker { image 'node:16.17.0' } }
   stages {
-    stage('Checkout branch') {
+    stage('build') {
       steps {
-        sh 'git version'
-        git(url: 'https://github.com/sonbkt303/node-library', branch: 'main', credentialsId: 'github-account-credential')
+          sh 'node --version'
       }
     }
 
-  }
-  environment {
-    dev = 'dev'
+    stage('Ok') {
+      steps {
+          echo "Ok"
+      }
+    }
   }
 }
