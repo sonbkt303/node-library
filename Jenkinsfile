@@ -9,7 +9,7 @@ pipeline {
     // }
     stage('Prerequisite') {
       steps {
-        echo Begin Prerequisite
+        sh "echo Begin Prerequisite"
         sh "echo login to docker registry..."
       }
     }
