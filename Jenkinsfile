@@ -7,6 +7,12 @@ pipeline {
     //     sh 'node --version'
     //   }
     // }
+    stage('Prerequisite') {
+      steps {
+        echo Begin Prerequisite
+        sh "echo login to docker registry..."
+      }
+    }
 
     stage('Build') {
       steps {
