@@ -2,11 +2,6 @@ pipeline {
   agent any
 
   stages {
-      // stage('build') {
-      //   steps {
-      //     sh 'node --version'
-      //   }
-      // }
       stage('Prerequisite') {
         steps {
           sh "echo Begin Prerequisite"
@@ -28,8 +23,8 @@ pipeline {
       stage('Build') {
         steps {
           sh "docker push kimsonbui/node-api:v1"
-      }
-    }
+        }
+     }
   }
 }
 
