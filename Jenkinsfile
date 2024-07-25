@@ -14,14 +14,6 @@ pipeline {
       }
     }
 
-    stage('Building Docker Image') {
-      steps {
-        script {
-            dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
-    }
-
     stage('Build') {
       steps {
         // nodejs('Node:18.17.0') {
