@@ -2,10 +2,18 @@ pipeline {
   agent any
 
   stages {
+    // stage('Prerequisite') {
+    //   steps {
+    //     sh "echo Begin Prerequisite"
+    //     sh "echo login to docker registry..."
+    //   }
+    // }
     stage('Prerequisite') {
       steps {
-        sh "echo Begin Prerequisite"
         sh "echo login to docker registry..."
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+          sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+        }
       }
     }
 
