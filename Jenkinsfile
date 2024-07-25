@@ -20,11 +20,11 @@ pipeline {
       }
     }
 
-      // stage('Build') {
-      //   steps {
-      //     sh "docker push kimsonbui/node-api:v1"
-      //   }
-      // }
+    stage('Build') {
+      steps {
+        sh "docker push kimsonbui/node-api:v1"
+      }
+    }
   }
 }
 
