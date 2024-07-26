@@ -59,8 +59,21 @@ pipeline {
     // }
 
   }
-  
+
   post {
+
+    always {
+      cleanWs(
+        cleanWhenAborted: true,
+        cleanWhenFailure: true,
+        cleanWhenNotBuilt: false,
+        cleanWhenSuccess: true,
+        cleanWhenUnstable: true,
+        deleteDirs: true,
+        notFailBuild: true,
+        disableDeferredWipeout: true
+      )
+    }
 
     failure {
       mail to: 'thansung1994@gmail.com',
