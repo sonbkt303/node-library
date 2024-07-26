@@ -1,8 +1,5 @@
-**/node_modules/
-**/dist
-.git
-npm-debug.log
-.coverage
-.coverage.*
+logs/
+node_modules
 .env
-.aws
+.git
+**/node_modules/
