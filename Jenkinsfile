@@ -80,6 +80,7 @@ pipeline {
         disableDeferredWipeout: true
       )
 
+      // DISCORD sent notification
       discordSend (
         description: "* Project: $JOB_NAME \n* Build Number: $BUILD_NUMBER", 
         footer: "$currentBuild.currentResult", 
