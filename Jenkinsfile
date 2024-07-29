@@ -79,6 +79,15 @@ pipeline {
         notFailBuild: true,
         disableDeferredWipeout: true
       )
+      
+      discordSend (
+        description: "Jenkins Pipeline Build", 
+        footer: "Footer Text", 
+        link: env.BUILD_URL, 
+        result: currentBuild.currentResult, 
+        title: 'Clever Lab Jenkins Build', 
+        webhookURL: $DISCORD_WEB_HOOK
+      )
     }
 
     // failure {
@@ -87,14 +96,7 @@ pipeline {
     //   subject: "FAILED: Build ${env.JOB_NAME}", 
     //   body: "Build failed ${env.JOB_NAME} build no: ${env.BUILD_NUMBER}.\n\nView the log at:\n ${env.BUILD_URL}\n\nBlue Ocean:\n${env.RUN_DISPLAY_URL}"
     // }
-    discordSend (
-      description: "Jenkins Pipeline Build", 
-      footer: "Footer Text", 
-      link: env.BUILD_URL, 
-      result: currentBuild.currentResult, 
-      title: 'Clever Lab Jenkins Build', 
-      webhookURL: $DISCORD_WEB_HOOK
-    )
+ 
     // success {
       // mail to: 'kimsonbui303@gmail.com',
       // cc : 'kimsonbui303@gmail.com',
