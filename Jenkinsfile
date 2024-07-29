@@ -79,14 +79,14 @@ pipeline {
         notFailBuild: true,
         disableDeferredWipeout: true
       )
-      
+
       discordSend (
         description: "Jenkins Pipeline Build", 
         footer: "Footer Text", 
         link: env.BUILD_URL, 
         result: currentBuild.currentResult, 
         title: 'Clever Lab Jenkins Build', 
-        webhookURL: $DISCORD_WEB_HOOK
+        webhookURL: "$DISCORD_WEB_HOOK"
       )
     }
 
