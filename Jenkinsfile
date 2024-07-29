@@ -82,7 +82,7 @@ pipeline {
 
       discordSend (
         description: "-Project: $JOB_NAME -Build Number: $BUILD_NUMBER", 
-        footer: "_$currentBuild.currentResult_", 
+        footer: "$currentBuild.currentResult", 
         link: env.BUILD_URL, 
         result: currentBuild.currentResult, 
         title: 'Clever Lab Jenkins Build', 
