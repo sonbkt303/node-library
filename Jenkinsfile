@@ -43,6 +43,7 @@ pipeline {
       }
     }
 
+
     // stage('Prerequisite') {
     //   steps {
     //     sh "echo login to docker registry..."
