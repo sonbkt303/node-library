@@ -86,17 +86,20 @@ pipeline {
       // cc : 'kimsonbui303@gmail.com',
       // subject: "SUCCESSFUL: Clever Lab build success Build ${env.JOB_NAME}", 
       // body: "Build Successful ${env.JOB_NAME} build no: ${env.BUILD_NUMBER}\n\nView the log at:\n ${env.BUILD_URL}\n\nBlue Ocean:\n${env.RUN_DISPLAY_URL}"
-      discordSend(
-        webhookURL: "https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue",
-        discordSend description: 'Status of my Project',
-        footer: '',
-        image: '',
-        link: env.BUILD_URL,
-        result: currentBuild.currentResult,
-        scmWebUrl: '',
-        thumbnail: '',
-        title: JOB_NAME
-      )
+      // discordSend(
+      //   webhookURL: "https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue",
+      //   discordSend description: 'Status of my Project',
+      //   footer: '',
+      //   image: '',
+      //   link: env.BUILD_URL,
+      //   result: currentBuild.currentResult,
+      //   scmWebUrl: '',
+      //   thumbnail: '',
+      //   title: JOB_NAME
+      //   discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "Webhook URL"
+      // )
+      discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: 'success jenkins build', webhookURL: "https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue"
+
     }
 
   }
