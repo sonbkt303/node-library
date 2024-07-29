@@ -81,7 +81,7 @@ pipeline {
       )
 
       discordSend (
-        description: "Project: $JOB_NAME:$BUILD_NUMBER", 
+        description: "- Project: $JOB_NAME - Build Number: $BUILD_NUMBER @mike.bui", 
         footer: "$currentBuild.currentResult", 
         link: env.BUILD_URL, 
         result: currentBuild.currentResult, 
