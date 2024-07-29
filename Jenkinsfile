@@ -5,34 +5,41 @@ pipeline {
     registryCredential = 'docker-hub-credential'
     dockerImage = ''
     repos = 'node-api'
+    DISCORD_WEB_HOOK="https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue"
   }
 
   agent any
 
   stages {
-    stage('Building Docker Image') {
-      steps {
-        script {
-          dockerImage = docker.build("$registry/$repos:$BUILD_NUMBER");
+    // stage('Building Docker Image') {
+    //   steps {
+    //     script {
+    //       dockerImage = docker.build("$registry/$repos:$BUILD_NUMBER");
 
-          sh "echo La la la $dockerImage";
-        }
-      }
-    }
+    //       sh "echo La la la $dockerImage";
+    //     }
+    //   }
+    // }
     
-    stage('Deploying Docker Image to Dockerhub') {
-      steps {
-        script {
-          docker.withRegistry('', registryCredential) {
-            dockerImage.push()
-          }
-        }
-      }
-    }
+    // stage('Deploying Docker Image to Dockerhub') {
+    //   steps {
+    //     script {
+    //       docker.withRegistry('', registryCredential) {
+    //         dockerImage.push()
+    //       }
+    //     }
+    //   }
+    // }
 
-    stage('Cleaning Up') {
+    // stage('Cleaning Up') {
+    //   steps{
+    //     sh "docker rmi --force $registry/$repos:$BUILD_NUMBER"
+    //   }
+    // }
+    
+    stage('OK') {
       steps{
-        sh "docker rmi --force $registry/$repos:$BUILD_NUMBER"
+        sh "echo Ok"
       }
     }
 
@@ -98,8 +105,14 @@ pipeline {
       //   title: JOB_NAME
       //   discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "Webhook URL"
       // )
-      discordSend (description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: 'success jenkins build', webhookURL: "https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue")
-
+      discordSend (
+        description: "Jenkins Pipeline Build", 
+        footer: "Footer Text", 
+        link: env.BUILD_URL, 
+        result: currentBuild.currentResult, 
+        title: 'Clever Lab Jenkins Build', 
+        webhookURL: $DISCORD_WEB_HOOK
+      )
     }
 
   }
