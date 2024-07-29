@@ -39,6 +39,7 @@ pipeline {
     
     stage('OK') {
       steps{
+        echo "${env.WORKSPACE}"
         sh "./scripts/test.sh"
       }
     }
