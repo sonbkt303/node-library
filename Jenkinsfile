@@ -85,7 +85,7 @@ pipeline {
           - Project: $JOB_NAME 
           - Build Number: $BUILD_NUMBER
         ", 
-        footer: "$currentBuild.currentResult", 
+        footer: "_$currentBuild.currentResult_", 
         link: env.BUILD_URL, 
         result: currentBuild.currentResult, 
         title: 'Clever Lab Jenkins Build', 
