@@ -39,7 +39,7 @@ pipeline {
     
     stage('OK') {
       steps{
-        echo "${env.WORKSPACE}"
+        sh "chmod +x -R ${env.WORKSPACE}"
         sh "./scripts/test.sh"
       }
     }
