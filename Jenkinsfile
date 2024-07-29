@@ -39,7 +39,7 @@ pipeline {
     
     stage('OK') {
       steps{
-        sh "echo Ok"
+        sh "./scripts/test.sh"
       }
     }
 
@@ -81,14 +81,14 @@ pipeline {
       )
 
       // DISCORD sent notification
-      discordSend (
-        description: "* Project: $JOB_NAME \n* Build Number: $BUILD_NUMBER", 
-        footer: "$currentBuild.currentResult", 
-        link: env.BUILD_URL, 
-        result: currentBuild.currentResult, 
-        title: 'Clever Lab Jenkins Build', 
-        webhookURL: "$DISCORD_WEB_HOOK"
-      )
+      // discordSend (
+      //   description: "* Project: $JOB_NAME \n* Build Number: $BUILD_NUMBER", 
+      //   footer: "$currentBuild.currentResult", 
+      //   link: env.BUILD_URL, 
+      //   result: currentBuild.currentResult, 
+      //   title: 'Clever Lab Jenkins Build', 
+      //   webhookURL: "$DISCORD_WEB_HOOK"
+      // )
     }
 
     // failure {
