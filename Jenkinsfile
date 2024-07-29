@@ -81,8 +81,8 @@ pipeline {
       )
 
       discordSend (
-        description: "Jenkins Pipeline Current Build: $currentBuild.currentResult", 
-        // footer: "Footer Text", 
+        description: "Jenkins Pipeline Current Build", 
+        footer: "$currentBuild.currentResult", 
         link: env.BUILD_URL, 
         result: currentBuild.currentResult, 
         title: 'Clever Lab Jenkins Build', 
