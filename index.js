@@ -3,13 +3,13 @@ const app = express();
 const port = 3000;
 require("dotenv").config();
 
+const PORT = process.env.NODE_API_PORT || 3000;
 
-console.log(process.env.MONGODB_PASSWORD)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 })
