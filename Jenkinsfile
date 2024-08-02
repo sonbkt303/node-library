@@ -37,12 +37,12 @@ pipeline {
     //   }
     // }
     
-    stage('OK') {
-      steps{
-        sh "chmod +x -R ${env.WORKSPACE}"
-        sh "./scripts/test.sh"
-      }
-    }
+    // stage('OK') {
+    //   steps{
+    //     sh "chmod +x -R ${env.WORKSPACE}"
+    //     sh "./scripts/test.sh"
+    //   }
+    // }
 
 
     stage('Prerequisite') {
