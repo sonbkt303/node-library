@@ -1,11 +1,29 @@
+// require("dotenv").config();
+const mongoose = require("mongoose");
+
 const {
-    DB_USER,
-    DB_PASSWORD,
-    DB_HOST,
-    DB_PORT,
-    DB_NAME,
+  MONGODB_USER,
+  MONGODB_PASSWORD,
+  MONGODB_DB_HOST,
+  MONGODB_LOCAL_PORT,
+  MONGODB_DATABASE,
 } = process.env;
 
-module.exports = {
-    url: `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`
+const mongoConnection = async () => {
+
+  let url = `mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_DB_HOST}:${MONGODB_LOCAL_PORT}/${MONGODB_DATABASE}?authSource=admin`;
+
+  const connection1 = await mongoose.connect(url, {
+    useNewUrlParser: true,
+  });
+
+  mongoose.connection.on('error', err => {
+    console.log('error', err)
+  });
+
+  return connection1;
+
+
 };
+
+module.exports = mongoConnection;
