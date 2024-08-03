@@ -56,7 +56,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh "docker build -t node-api:v1 ."
+        // sh "docker build -t node-api:v1 ."
+        sh "docker build -t node-api:v1 --progress=plain --no-cache --target test ."
         sh "docker tag node-api:v1 kimsonbui/node-api:v1"
       }
     }
