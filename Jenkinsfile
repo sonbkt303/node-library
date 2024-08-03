@@ -61,24 +61,24 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
-      steps {
-        sh "docker push kimsonbui/node-api:v1"
-      }
-    }
-
-    // stage('Generate HTML report') {
-    //   cucumber buildStatus: 'UNSTABLE',
-    //     reportTitle: 'My report',
-    //     fileIncludePattern: '**/*.json',
-    //     trendsLimit: 10,
-    //     classifications: [
-    //       [
-    //         'key': 'Browser',
-    //         'value': 'Firefox'
-    //       ]
-    //     ]
+    // stage('Deploy') {
+    //   steps {
+    //     sh "docker push kimsonbui/node-api:v1"
+    //   }
     // }
+
+    stage('Generate HTML report') {
+      cucumber buildStatus: 'UNSTABLE',
+      reportTitle: 'My report',
+      fileIncludePattern: '**/*.json',
+      trendsLimit: 10,
+      classifications: [
+        [
+          'key': 'Browser',
+          'value': 'Chrome'
+        ]
+      ]
+    }
   }
 
   post {
