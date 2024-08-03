@@ -69,7 +69,7 @@ pipeline {
 
     stage('Generate HTML report') {
       steps {
-        cucumber buildStatus: 'UNSTABLE',
+        cucumber buildStatus: 'SUCCESS',
           reportTitle: 'My report',
           fileIncludePattern: '**/*.json',
           trendsLimit: 10,
