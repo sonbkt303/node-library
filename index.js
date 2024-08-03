@@ -4,8 +4,6 @@ const port = 3000;
 require("dotenv").config();
 const connection = require("./src/config/db.config");
 
-
-
 const PORT = process.env.NODE_API_PORT || 3000;
 
 app.get('/', (req, res) => {

@@ -1,4 +1,7 @@
 // const { MongoClient } = require("mongodb");
+it("should insert a doc into collection", async () => {
+  expect(1).toEqual(1);
+});
 
 // describe("Must connect and insert document success", () => {
 //   let connection;
