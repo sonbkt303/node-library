@@ -60,7 +60,7 @@ RUN --mount=type=bind,source=package.json,target=package.json \
     npm ci --include=dev
 # USER node
 COPY . .
-CMD npm test
+CMD ["npm", "test"]
 
 
 # FROM base as dev
