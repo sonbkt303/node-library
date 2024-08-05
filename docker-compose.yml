@@ -14,12 +14,15 @@ services:
       - db:/data/db
     networks:
       - node-network
-  app:
+  api:
+    image: "backend-service:v1"
     depends_on:
       - mongodb
     build: 
       context: .
       dockerfile: Dockerfile
+      # tags:
+      #   - "myimage:v1"
       # ../node-library/src
     restart: unless-stopped
     env_file: ./.env

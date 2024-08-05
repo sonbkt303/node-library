@@ -57,16 +57,16 @@ pipeline {
     stage('Build') {
       steps {
         // sh "docker build -t node-api:v1 ."
-        sh "docker build -t node-api:v1 --progress=plain --no-cache --target test ."
-        sh "docker tag node-api:v1 kimsonbui/node-api:v1"
+        sh "docker compose build"
+        sh "docker tag backend-service:v1 kimsonbui/backend-service:v1"
       }
     }
 
-    // stage('Deploy') {
-    //   steps {
-    //     sh "docker push kimsonbui/node-api:v1"
-    //   }
-    // }
+    stage('Deploy') {
+      steps {
+        sh "docker compose push kimsonbui/backend-service:v1"
+      }
+    }
 
     stage('Generate HTML report') {
       steps {
