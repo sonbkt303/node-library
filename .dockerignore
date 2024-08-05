@@ -1,5 +1,8 @@
+
+**/node_modules
 logs/
-node_modules
+README.md
+package-lock.json
+docker-compose.dev.yml
 .env
 .git
-**/node_modules/

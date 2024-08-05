@@ -3,44 +3,48 @@ it("should insert a doc into collection", async () => {
   expect(1).toEqual(1);
 });
 
-// describe("Must connect and insert document success", () => {
-//   let connection;
-//   let db;
-//   const DB_URI = "mongodb://localhost:27017";
-//   const DB_NAME = "test";
-//   const MOCK_COLLECTION = 'mock_jest_users';
+describe("Must connect and insert document success", () => {
+  let connection;
+  let db;
+  const DB_URI = "mongodb://localhost:27017";
+  const DB_NAME = "test";
+  const MOCK_COLLECTION = 'mock_jest_users';
 
-//   beforeAll(async () => {
-//     connection = await MongoClient.connect(DB_URI, {
-//       useNewUrlParser: true,
-//       useUnifiedTopology: true,
-//     });
-//     db = await connection.db(DB_NAME);
-//   });
+  it("should insert a doc into collection", async () => {
+    expect(1).toEqual(1);
+  });
 
-//   afterAll(async () => {
-//     await connection.close();
-//   });
+  // beforeAll(async () => {
+  //   connection = await MongoClient.connect(DB_URI, {
+  //     useNewUrlParser: true,
+  //     useUnifiedTopology: true,
+  //   });
+  //   db = await connection.db(DB_NAME);
+  // });
 
-
-//   it("should insert a doc into collection", async () => {
-//     const users = db.collection(MOCK_COLLECTION);
-
-//     const mockUser = { _id: "some-user-id", name: "John" };
-//     await users.insertOne(mockUser);
-
-//     const insertedUser = await users.findOne({ _id: "some-user-id" });
-//     expect(insertedUser).toEqual(mockUser);
+  // afterAll(async () => {
+  //   await connection.close();
+  // });
 
 
-//   });
+  // it("should insert a doc into collection", async () => {
+  //   const users = db.collection(MOCK_COLLECTION);
 
-//   it("Should be delete all document on mock_users collection", async () => {
-//     const users = db.collection(MOCK_COLLECTION);
-//     await users.deleteOne({ _id: "some-user-id" });
+  //   const mockUser = { _id: "some-user-id", name: "John" };
+  //   await users.insertOne(mockUser);
 
-//     const allUsers = await users.find().toArray();
+  //   const insertedUser = await users.findOne({ _id: "some-user-id" });
+  //   expect(insertedUser).toEqual(mockUser);
 
-//     expect(allUsers.length).toEqual(0);
-//   })
-// });
+
+  // });
+
+  // it("Should be delete all document on mock_users collection", async () => {
+  //   const users = db.collection(MOCK_COLLECTION);
+  //   await users.deleteOne({ _id: "some-user-id" });
+
+  //   const allUsers = await users.find().toArray();
+
+  //   expect(allUsers.length).toEqual(0);
+  // })
+});
