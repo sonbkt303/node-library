@@ -75,6 +75,13 @@ pipeline {
       }
     }
 
+    
+    stage('Cleaning Up') {
+      steps{
+        sh "docker rmi --force kimsonbui/backend-service:v1"
+      }
+    }
+
     stage('Generate HTML report') {
       steps {
         cucumber buildStatus: 'SUCCESS',
