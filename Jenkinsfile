@@ -54,6 +54,13 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        // sh "docker build -t node-api:v1 ."
+        sh "docker compose run api npm test"
+      }
+    }
+    
     stage('Build') {
       steps {
         // sh "docker build -t node-api:v1 ."
@@ -61,6 +68,8 @@ pipeline {
         sh "docker tag backend-service:v1 kimsonbui/backend-service:v1"
       }
     }
+    
+
 
     stage('Deploy') {
       steps {
