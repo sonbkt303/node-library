@@ -64,7 +64,7 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh "docker compose push kimsonbui/backend-service:v1"
+        sh "docker push kimsonbui/backend-service:v1"
       }
     }
 
