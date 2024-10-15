@@ -6,7 +6,6 @@ pipeline {
     dockerImage = ''
     repos = 'node-api'
     DISCORD_WEB_HOOK="https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue"
-    projectName='node'
   }
 
   agent any
