@@ -35,9 +35,7 @@ pipeline {
         // withSonarQubeEnv('SonarQube') {
         //     sh 'sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=. -Dsonar.host.url=http://172.76.10.185:9000 -Dsonar.login=sqp_4f6e914fb0f7a6cd57eea823e0e4406d7ab4b78b'
         // }
-        steps {
-          sh 'npm run sonar'
-        }
+        sh 'npm run sonar'
       }
     }
 
