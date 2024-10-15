@@ -34,6 +34,12 @@ pipeline {
     //     }
     //   }
     // }
+
+    stage('Install Dependencies') {
+      steps {
+          sh 'npm install -g sonar-scanner'
+      }
+    }
     stage('SonarQube Analysis') {
       steps {
         // withSonarQubeEnv('SonarQube') {
