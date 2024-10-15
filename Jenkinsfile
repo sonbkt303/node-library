@@ -1,7 +1,7 @@
 pipeline {
 
   tools {
-    nodejs 'Node-20' // Ensure NodeJS is installed and configured in Jenkins
+    nodejs 'NodeJs' // Ensure NodeJS is installed and configured in Jenkins
   }
 
   environment {
