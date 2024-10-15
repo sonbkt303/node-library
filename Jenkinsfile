@@ -1,5 +1,9 @@
 pipeline {
 
+  tools {
+    nodejs 'NodeJS' // Ensure NodeJS is installed and configured in Jenkins
+  }
+  
   environment {
     registry = "kimsonbui"
     registryCredential = 'docker-hub-credential'
