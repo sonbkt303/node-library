@@ -43,11 +43,11 @@ pipeline {
     //   }
     // }
 
-    stage('Clone Repository') {
-      steps {
-          git 'https://github.com/sonbkt303/node-library'
-      }
-    }
+    // stage('Clone Repository') {
+    //   steps {
+    //       git 'https://github.com/sonbkt303/node-library'
+    //   }
+    // }
 
     stage('SonarQube Analysis') {
       steps {
