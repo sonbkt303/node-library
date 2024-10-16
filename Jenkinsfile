@@ -43,12 +43,18 @@ pipeline {
     //   }
     // }
 
-    // stage('Clone Repository') {
-    //   steps {
-    //       git 'https://github.com/sonbkt303/node-library'
-    //   }
-    // }
+    stage('Clone Repository') {
+      steps {
+          git 'https://github.com/sonbkt303/node-library'
+      }
+    }
 
+    stage('Install Dependencies') {
+        steps {
+            sh 'npm install'
+        }
+    }
+    
     stage('SonarQube Analysis') {
       steps {
         // withSonarQubeEnv('SonarQube') {
