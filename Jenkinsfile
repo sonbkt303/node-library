@@ -17,6 +17,7 @@ pipeline {
 
   agent any
 
+
   stages {
     // stage('Building Docker Image') {
     //   steps {
@@ -47,7 +48,7 @@ pipeline {
     stage('SCM') {
       checkout scm
     }
-    
+
     stage('SonarQube Analysis') {
       steps {
         // withSonarQubeEnv('SonarQube') {
