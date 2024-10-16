@@ -68,7 +68,8 @@ pipeline {
         // sh 'npm run sonar'
         withSonarQubeEnv('sq1') { // Name of the SonarQube server
           // sh "${SCANNER_HOME}/bin/sonar-scanner"
-          sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=."
+          // sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=."
+          sh "${SCANNER_HOME}/bin/sonar-scanner"
 
         }
       }
