@@ -45,9 +45,9 @@ pipeline {
     //   }
     // }
 
-    stage('SCM') {
+    stage('Clone Repository') {
       steps {
-        checkout scm
+          git 'https://github.com/sonbkt303/node-library'
       }
     }
 
