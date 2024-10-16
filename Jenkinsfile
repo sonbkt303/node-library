@@ -15,8 +15,6 @@ pipeline {
 
   agent any
 
-
-
   stages {
     // stage('Building Docker Image') {
     //   steps {
@@ -50,17 +48,17 @@ pipeline {
     //   }
     // }
 
-    stage('SCM') {
-      steps {
-        checkout scm
-      }
-    }
+    // stage('SCM') {
+    //   steps {
+    //     checkout scm
+    //   }
+    // }
 
-    stage('Install Dependencies') {
-      steps {
-          sh 'npm install'
-      }
-    }
+    // stage('Install Dependencies') {
+    //   steps {
+    //       sh 'npm install'
+    //   }
+    // }
     
     stage('SonarQube Analysis') {
       steps {
