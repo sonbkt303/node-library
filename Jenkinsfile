@@ -55,7 +55,7 @@ pipeline {
         //     sh 'sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=. -Dsonar.host.url=http://172.76.10.185:9000 -Dsonar.login=sqp_4f6e914fb0f7a6cd57eea823e0e4406d7ab4b78b'
         // }
         // sh 'npm run sonar'
-        withSonarQubeEnv('My SonarQube Server') { // Name of the SonarQube server
+        withSonarQubeEnv('sq1') { // Name of the SonarQube server
           // sh "${SCANNER_HOME}/bin/sonar-scanner"
           sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=."
 
