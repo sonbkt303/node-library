@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+const b = 2;
 // Long function
 function longFunction() {
   console.log('Doing something...');
