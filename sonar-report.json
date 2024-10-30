@@ -4,8 +4,8 @@
       "id": "rule1",
       "name": "Mike Example Rule",
       "description": "This is an example rule.",
-      "engineId": "custom",
-      "cleanCodeAttribute": "FORMATTED",
+      "engineId": "testEngine",
+      "cleanCodeAttribute": "CONVENTIONAL",
       "impacts": [
         {
           "softwareQuality": "MAINTAINABILITY",
