@@ -1,14 +1,19 @@
 pipeline {
 
-  environment {
-    registry = "kimsonbui"
-    registryCredential = 'docker-hub-credential'
-    dockerImage = ''
-    repos = 'node-api'
-    DISCORD_WEB_HOOK="https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue"
-  }
-
   agent any
+
+  // tools {
+  //   nodejs 'NodeJs' // Ensure NodeJS is installed and configured in Jenkins
+  // }
+
+  environment {
+    // registry = "kimsonbui"
+    // registryCredential = 'docker-hub-credential'
+    // dockerImage = ''
+    // repos = 'node-api'
+    // DISCORD_WEB_HOOK="https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue"
+    SCANNER_HOME = tool 'SonarScanner' // Name of the SonarScanner installation
+  }
 
   stages {
     // stage('Building Docker Image') {
@@ -31,6 +36,45 @@ pipeline {
     //   }
     // }
 
+    // stage('Install Dependencies') {
+    //   steps {
+    //       sh 'npm install -g sonar-scanner'
+    //   }
+    // }
+
+    // stage('Clone Repository') {
+    //   steps {
+    //       git 'https://github.com/sonbkt303/node-library'
+    //   }
+    // }
+
+    // stage('SCM') {
+    //   steps {
+    //     checkout scm
+    //   }
+    // }
+
+    // stage('Install Dependencies') {
+    //   steps {
+    //       sh 'npm install'
+    //   }
+    // }
+    
+    stage('SonarQube Analysis') {
+      steps {
+        // withSonarQubeEnv('SonarQube') {
+        //     sh 'sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=. -Dsonar.host.url=http://172.76.10.185:9000 -Dsonar.login=sqp_4f6e914fb0f7a6cd57eea823e0e4406d7ab4b78b'
+        // }
+        // sh 'npm run sonar'
+        withSonarQubeEnv('sq1') { // Name of the SonarQube server
+          // sh "${SCANNER_HOME}/bin/sonar-scanner"
+          // sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=."
+          sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=."
+
+        }
+      }
+    }
+
     // stage('Cleaning Up') {
     //   steps{
     //     sh "docker rmi --force $registry/$repos:$BUILD_NUMBER"
@@ -45,57 +89,28 @@ pipeline {
     // }
 
 
-    stage('Prerequisite') {
-      steps {
-        sh "echo login to docker registry..."
-        withCredentials([usernamePassword(credentialsId: 'docker-hub-credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-          sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-        }
-      }
-    }
+    // stage('Prerequisite') {
+    //   steps {
+    //     sh "echo login to docker registry..."
+    //     withCredentials([usernamePassword(credentialsId: 'docker-hub-credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+    //       sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+    //     }
+    //   }
+    // }
 
-    stage('Test') {
-      steps {
-        // sh "docker build -t node-api:v1 ."
-        sh "docker compose run api npm test"
-      }
-    }
+    // stage('Build') {
+    //   steps {
+    //     sh "docker build -t node-api:v1 ."
+    //     sh "docker tag node-api:v1 kimsonbui/node-api:v1"
+    //   }
+    // }
 
-    stage('Build') {
-      steps {
-        // sh "docker build -t node-api:v1 ."
-        sh "docker compose build"
-        sh "docker tag backend-service:v1 kimsonbui/backend-service:v1"
-      }
-    }
+    // stage('Deploy') {
+    //   steps {
+    //     sh "docker push kimsonbui/node-api:v1"
+    //   }
+    // }
 
-    stage('Deploy') {
-      steps {
-        sh "docker push kimsonbui/backend-service:v1"
-      }
-    }
-
-    
-    stage('Cleaning Up') {
-      steps{
-        sh "docker rmi --force kimsonbui/backend-service:v1"
-      }
-    }
-
-    stage('Generate HTML report') {
-      steps {
-        cucumber buildStatus: 'SUCCESS',
-          reportTitle: 'My report',
-          fileIncludePattern: '**/*.json',
-          trendsLimit: 10,
-          classifications: [
-            [
-              'key': 'Browser',
-              'value': 'Chrome'
-            ]
-          ]
-        }
-      }
   }
 
   post {
@@ -110,21 +125,6 @@ pipeline {
         notFailBuild: true,
         disableDeferredWipeout: true
       )
-
-    // cucumber buildStatus: 'UNSTABLE',
-    //   failedFeaturesNumber: 1,
-    //   failedScenariosNumber: 1,
-    //   skippedStepsNumber: 1,
-    //   failedStepsNumber: 1,
-    //   classifications: [
-    //           [key: 'Commit', value: '<a href="${GERRIT_CHANGE_URL}">${GERRIT_PATCHSET_REVISION}</a>'],
-    //           [key: 'Submitter', value: '${GERRIT_PATCHSET_UPLOADER_NAME}']
-    //   ],
-    //   reportTitle: 'My report',
-    //   fileIncludePattern: '**/*cucumber-report.json',
-    //   sortingMethod: 'ALPHABETICAL',
-    //   trendsLimit: 100
-      
 
       // DISCORD sent notification
       // discordSend (
@@ -165,4 +165,3 @@ pipeline {
 
   }
 }
-
