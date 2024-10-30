@@ -19,6 +19,7 @@
     {
       "engineId": "testEngine",
       "ruleId": "rule1",
+      "severity": "MAJOR",
       "effortMinutes": 10,
       "primaryLocation": {
         "message": "Variable name cannot contain number",
