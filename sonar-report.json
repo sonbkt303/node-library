@@ -20,6 +20,7 @@
       "engineId": "testEngine",
       "ruleId": "rule1",
       "severity": "MAJOR",
+      "type": "CODE_SMELL",  // Added type field here
       "effortMinutes": 10,
       "primaryLocation": {
         "message": "Variable name cannot contain number",
