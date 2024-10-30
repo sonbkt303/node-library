@@ -1,4 +1,5 @@
 {
+  "engineId": "testEngine", // Ensure this field is at the top level
   "rules": [
     {
       "id": "rule1",
