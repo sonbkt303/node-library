@@ -1,5 +1,9 @@
 pipeline {
 
+  agent {
+    label: 'linux'
+  }
+
   // tools {
   //   nodejs 'NodeJs' // Ensure NodeJS is installed and configured in Jenkins
   // }
@@ -13,7 +17,7 @@ pipeline {
     SCANNER_HOME = tool 'SonarScanner' // Name of the SonarScanner installation
   }
 
-  agent any
+  
 
   stages {
     // stage('Building Docker Image') {
