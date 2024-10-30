@@ -17,6 +17,7 @@
   ],
   "issues": [
     {
+      "engineId": "testEngine",
       "ruleId": "rule1",
       "effortMinutes": 10,
       "primaryLocation": {
