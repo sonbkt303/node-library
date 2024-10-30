@@ -32,6 +32,9 @@ function longFunction() {
   let unusedVar = 'This variable is never used';
 }
 
+
+const c = '12312312';
+
 longFunction();
 
 app.listen(port, () => {
