@@ -1,3 +1,6 @@
 node_modules/
 results/
 .sonar/
+coverage/
+dist/
+.sonar/
