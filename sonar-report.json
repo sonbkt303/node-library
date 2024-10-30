@@ -1,0 +1,31 @@
+{
+  "rules": [
+    {
+      "id": "rule1",
+      "name": "Mike Example Rule",
+      "description": "This is an example rule.",
+      "engineId": "custom",
+      "cleanCodeAttribute": "FORMATTED",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "ruleId": "rule1",
+      "effortMinutes": 10,
+      "primaryLocation": {
+        "message": "Variable name cannot contain number",
+        "filePath": "./index.js",
+        "textRange": {
+          "startLine": 38,
+          "endLine": 41
+        }
+      }
+    }
+  ]
+}
