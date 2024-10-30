@@ -36,6 +36,9 @@ function longFunction() {
 const c = '12312312';
 
 const aslnl123 = 'asdasd';
+
+const aslnl123 = 'asdasd';
+const aslnl123 = 'asdasd';
 longFunction();
 
 app.listen(port, () => {
