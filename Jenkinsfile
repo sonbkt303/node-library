@@ -1,6 +1,8 @@
 pipeline {
 
-  agent any
+  agent {
+    label 'linux'
+  }
 
   // tools {
   //   nodejs 'NodeJs' // Ensure NodeJS is installed and configured in Jenkins
