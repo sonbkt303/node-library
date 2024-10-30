@@ -2,35 +2,37 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-// Magic number
 const MAGIC_NUMBER = 42
 
-// Global variable
-global.someGlobalVar = 'I am global!'
-
-console.log('1111111');
+console.log('Initializing server...');
 app.get('/', (req, res) => {
-  // Duplicated code
-  console.log('1111111');
   res.send('Hello World!')
 })
 
 const b = 2;
-// Long function
+
 function longFunction() {
   console.log('Doing something...');
   for (let i = 0; i < MAGIC_NUMBER; i++) {
     console.log(i);
+    // Deeply nested loop
+    for (let j = 0; j < 10; j++) {
+      for (let k = 0; k < 5; k++) {
+        console.log(`Nested loop: ${i}, ${j}, ${k}`);
+      }
+    }
+  }
+  // Magic number
+  let result = 0;
+  for (let m = 0; m < 100; m++) {
+    result += m;
   }
   console.log('Done something.');
+  // Unused variable
+  let unusedVar = 'This variable is never used';
 }
 
 longFunction();
-
-// Commented-out code
-// app.get('/old-route', (req, res) => {
-//   res.send('This route is deprecated')
-// })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
