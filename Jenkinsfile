@@ -3,9 +3,9 @@ pipeline {
     label 'linux' // Corrected syntax
   }
 
-  // tools {
-  //   nodejs 'NodeJs' // Ensure NodeJS is installed and configured in Jenkins
-  // }
+  tools {
+    nodejs 'NodeJs 16' // Ensure NodeJS is installed and configured in Jenkins
+  }
 
   environment {
     // registry = "kimsonbui"
@@ -55,11 +55,11 @@ pipeline {
     //   }
     // }
 
-    // stage('Install Dependencies') {
-    //   steps {
-    //       sh 'npm install'
-    //   }
-    // }
+    stage('Install Dependencies') {
+      steps {
+          sh 'npm install'
+      }
+    }
     
     stage('SonarQube Analysis') {
       steps {
