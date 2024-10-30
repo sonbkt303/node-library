@@ -39,9 +39,18 @@ const aslnl123 = 'asdasd';
 
 const aslnl123 = 'asdasd';
 const aslnl123 = 'asdasd';
+
 longFunction();
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
+
+
+const mike123123 = 'asdasd';
+
+
+const sonbkt303 = '123123';
+
+const lana123123455 = 1;
