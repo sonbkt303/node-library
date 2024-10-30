@@ -1,15 +1,15 @@
 pipeline {
 
-  tools {
-    nodejs 'NodeJs' // Ensure NodeJS is installed and configured in Jenkins
-  }
+  // tools {
+  //   nodejs 'NodeJs' // Ensure NodeJS is installed and configured in Jenkins
+  // }
 
   environment {
-    registry = "kimsonbui"
-    registryCredential = 'docker-hub-credential'
-    dockerImage = ''
-    repos = 'node-api'
-    DISCORD_WEB_HOOK="https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue"
+    // registry = "kimsonbui"
+    // registryCredential = 'docker-hub-credential'
+    // dockerImage = ''
+    // repos = 'node-api'
+    // DISCORD_WEB_HOOK="https://discord.com/api/webhooks/1267323812748460185/HonujRxjSUzUojI5PM7rANIT_uEh9v4WZGL6n3BWC9_8Xy3PH1DjJo_ggTw3h4S3TDue"
     SCANNER_HOME = tool 'SonarScanner' // Name of the SonarScanner installation
   }
 
@@ -69,7 +69,7 @@ pipeline {
         withSonarQubeEnv('sq1') { // Name of the SonarQube server
           // sh "${SCANNER_HOME}/bin/sonar-scanner"
           // sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=."
-          sh "${SCANNER_HOME}/bin/sonar-scanner"
+          sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=node-library -Dsonar.sources=."
 
         }
       }
