@@ -4,10 +4,17 @@ pipeline {
   }
 
   environment {
-    registry = "kimsonbui"
+    registry = 'kimsonbui'
   }
 
   stages {
+    stage('Say hi') {
+      steps {
+        script {
+          echo 'Hello, Jenkins!'
+        }  
+      } 
+    }
     stage('Checkout') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']],
@@ -32,7 +39,6 @@ pipeline {
         notFailBuild: true,
         disableDeferredWipeout: true
       )
-
     }
   }
 }
