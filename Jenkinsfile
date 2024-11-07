@@ -35,7 +35,7 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
           // sh 'git config --global credential.helper store'
-          bat 'echo "https://$GITHUB_TOKEN:@github.com" > ~/.git-credentials'
+          // bat 'echo "https://$GITHUB_TOKEN:@github.com" > ~/.git-credentials'
           checkout([$class: 'GitSCM', branches: [[name: '*/main']],
             doGenerateSubmoduleConfigurations: false,
             extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]]],
