@@ -23,9 +23,7 @@ pipeline {
             git config --global credential.helper store
             echo https://%GITHUB_TOKEN%@github.com > %USERPROFILE%\\.git-credentials
             git clone https://%GITHUB_TOKEN%@github.com/mikebkt/evn-sonar-scanner.git
-            cd evn-sonar-scanner
-            xcopy ry-scanner\\* ..\\ /E /H /K /Y
-            cd ..
+            move evn-sonar-scanner\\ry-scanner .
             rmdir /S /Q evn-sonar-scanner
           '''
         }
