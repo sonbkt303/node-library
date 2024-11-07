@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'windows' // Corrected syntax
+    label 'windows'
   }
 
   environment {
@@ -12,17 +12,16 @@ pipeline {
       steps {
         script {
           echo 'Hello, Jenkins!'
-        }
-      }
+        }  
+      } 
     }
-    
     stage('Checkout') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'evn-scanner-credential', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+        withCredentials([string(credentialsId: 'evn-scanner-token', variable: 'GIT_TOKEN')]) {
           checkout([$class: 'GitSCM', branches: [[name: '*/main']],
             doGenerateSubmoduleConfigurations: false,
             extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]]],
-            userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner', credentialsId: 'evn-scanner-credential', credentials: [[username: GIT_USERNAME, password: GIT_PASSWORD]]]]])
+            userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner', credentialsId: 'evn-scanner-token', credentials: [[username: 'your-github-username', password: GIT_TOKEN]]]]])
         }
       }
     }
@@ -35,12 +34,8 @@ pipeline {
         cleanWhenFailure: true,
         cleanWhenNotBuilt: false,
         cleanWhenSuccess: true,
-        cleanWhenUnstable: true,
-        deleteDirs: true,
-        notFailBuild: true,
-        disableDeferredWipeout: true
+        deleteDirs: true
       )
     }
   }
 }
-
