@@ -24,8 +24,9 @@ pipeline {
             echo https://%GITHUB_TOKEN%@github.com > %USERPROFILE%\\.git-credentials
             git clone https://%GITHUB_TOKEN%@github.com/mikebkt/evn-sonar-scanner.git
             cd evn-sonar-scanner
-            git sparse-checkout init --cone
-            git sparse-checkout set ry-scanner
+            xcopy ry-scanner\\* ..\\ /E /H /K /Y
+            cd ..
+            rmdir /S /Q evn-sonar-scanner
           '''
         }
       }
