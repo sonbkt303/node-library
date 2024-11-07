@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Checkout') {
       steps {
-        withCredentials([string(credentialsId: 'evn-scanner-token', variable: 'GIT_TOKEN')]) {
+        withCredentials([string(credentialsId: 'evn-scanner-credential', variable: 'GIT_TOKEN')]) {
           checkout([$class: 'GitSCM', branches: [[name: '*/main']],
             doGenerateSubmoduleConfigurations: false,
             extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]]],
