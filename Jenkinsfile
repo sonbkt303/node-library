@@ -19,12 +19,14 @@ pipeline {
     stage('Checkout') {
       steps {
         withCredentials([string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
-          sh 'git config --global credential.helper store'
-          sh 'echo "https://$GITHUB_TOKEN:@github.com" > ~/.git-credentials'
-          checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-            doGenerateSubmoduleConfigurations: false,
-            extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]]],
-            userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner.git', credentialsId: 'github-pat']]])
+          bat '''
+            git config --global credential.helper store
+            echo https://%GITHUB_TOKEN%@github.com > %USERPROFILE%\\.git-credentials
+            git clone https://github.com/mikebkt/evn-sonar-scanner.git
+            cd evn-sonar-scanner
+            git sparse-checkout init --cone
+            git sparse-checkout set ry-scanner
+          '''
         }
       }
     }
