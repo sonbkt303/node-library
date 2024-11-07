@@ -32,15 +32,15 @@ pipeline {
     }
   }
 
-  post {
-    always {
-      cleanWs(
-        cleanWhenAborted: true,
-        cleanWhenFailure: true,
-        cleanWhenNotBuilt: false,
-        cleanWhenSuccess: true,
-        deleteDirs: true
-      )
-    }
-  }
+  // post {
+  //   always {
+  //     cleanWs(
+  //       cleanWhenAborted: true,
+  //       cleanWhenFailure: true,
+  //       cleanWhenNotBuilt: false,
+  //       cleanWhenSuccess: true,
+  //       deleteDirs: true
+  //     )
+  //   }
+  // }
 }
