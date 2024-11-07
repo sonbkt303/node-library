@@ -14,7 +14,7 @@ pipeline {
           doGenerateSubmoduleConfigurations: false,
           // extensions: [[$class: 'SubmoduleOption', disableSubmodules: false,
           //               parentCredentials: true, recursiveSubmodules: true]],
-          extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'scanner']]]],
+          extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]]],
           userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner', credentialsId: 'evn-scanner-credential']]])
       }
     }
