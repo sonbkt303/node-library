@@ -15,42 +15,17 @@ pipeline {
         }
       }
     }
-    // stage('Checkout') {
-    //   steps {
-    //     withCredentials([string(credentialsId: 'evn-scanner-credential', variable: 'GIT_TOKEN')]) {
-    //       checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-    //         doGenerateSubmoduleConfigurations: false,
-    //         extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]]],
-    //         userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner', credentialsId: 'evn-scanner-token', credentials: [[username: 'your-github-username', password: GIT_TOKEN]]]]])
-    //     }
-    //   }
-    // }
-
-    // stage('Checkout') {
-    //   steps {
-    //     checkout([
-    //       $class: 'GitSCM',
-    //       branches: [[name: '*/main']],
-    //       doGenerateSubmoduleConfigurations: false,
-    //       extensions: [
-    //           [$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]],
-    //           [$class: 'SubmoduleOption', recursiveSubmodules: true, parentCredentials: true]
-    //       ],
-    //       userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner', credentialsId: 'evn-scanner-credential']]
-    //     ])
-    //   }
-    // }
 
     stage('Checkout') {
       steps {
-          withCredentials([string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
-            checkout([
-                        $class: 'GitSCM',
-                        branches: [[name: '*/main']],
-                        doGenerateSubmoduleConfigurations: false,
-                        userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner.git', credentialsId: 'github-pat']]
-                    ])
-          }
+        withCredentials([string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
+          sh 'git config --global credential.helper store'
+          sh 'echo "https://$GITHUB_TOKEN:@github.com" > ~/.git-credentials'
+          checkout([$class: 'GitSCM', branches: [[name: '*/main']],
+            doGenerateSubmoduleConfigurations: false,
+            extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]]],
+            userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner.git', credentialsId: 'github-pat']]])
+        }
       }
     }
   }
