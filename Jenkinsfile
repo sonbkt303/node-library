@@ -43,12 +43,12 @@ pipeline {
 
     stage('Checkout') {
       steps {
-          withCredentials([string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
+          withCredentials([string(credentialsId: 'github-credential-evn', variable: 'GITHUB_TOKEN')]) {
             checkout([
                         $class: 'GitSCM',
                         branches: [[name: '*/main']],
                         doGenerateSubmoduleConfigurations: false,
-                        userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner.git', credentialsId: 'github-pat']]
+                        userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner.git', credentialsId: 'github-credential-evn']]
                     ])
           }
       }
