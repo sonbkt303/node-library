@@ -12,15 +12,18 @@ pipeline {
       steps {
         script {
           echo 'Hello, Jenkins!'
-        }  
-      } 
+        }
+      }
     }
+    
     stage('Checkout') {
       steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-          doGenerateSubmoduleConfigurations: false,
-          extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]]],
-          userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner', credentialsId: 'evn-scanner-credential']]])
+        withCredentials([usernamePassword(credentialsId: 'evn-scanner-credential', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+          checkout([$class: 'GitSCM', branches: [[name: '*/main']],
+            doGenerateSubmoduleConfigurations: false,
+            extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'ry-scanner']]]],
+            userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner', credentialsId: 'evn-scanner-credential', credentials: [[username: GIT_USERNAME, password: GIT_PASSWORD]]]]])
+        }
       }
     }
   }
