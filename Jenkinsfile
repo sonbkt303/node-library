@@ -12,8 +12,8 @@ pipeline {
       steps {
         script {
           echo 'Hello, Jenkins!'
-        }  
-      } 
+        }
+      }
     }
     // stage('Checkout') {
     //   steps {
@@ -26,7 +26,8 @@ pipeline {
     //   }
     // }
     stage('Checkout') {
-      checkout([
+      steps {
+        checkout([
           $class: 'GitSCM',
           branches: [[name: '*/main']],
           doGenerateSubmoduleConfigurations: false,
@@ -35,9 +36,9 @@ pipeline {
               [$class: 'SubmoduleOption', recursiveSubmodules: true, parentCredentials: true]
           ],
           userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner', credentialsId: 'evn-scanner-credential']]
-      ])
+        ])
+      }
     }
-      
   }
 
   post {
