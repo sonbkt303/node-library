@@ -43,15 +43,14 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        withCredentials([string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
-          checkout([
-            $class: 'GitSCM',
-            branches: [[name: '*/main']],
-            doGenerateSubmoduleConfigurations: false,
-            extensions: [[$class: 'SubmoduleOption', recursiveSubmodules: true, parentCredentials: true]],
-            userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner.git', credentialsId: 'github-pat']]
-          ])
-        }
+          withCredentials([string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
+            checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: '*/main']],
+                        doGenerateSubmoduleConfigurations: false,
+                        userRemoteConfigs: [[url: 'https://github.com/mikebkt/evn-sonar-scanner.git', credentialsId: 'github-pat']]
+                    ])
+          }
       }
     }
   }
